@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <script src="scripts/includes.js"></script>
+          <link rel="stylesheet" href="styles/styles.css">
+        <meta charset="utf-8"/>
+            <h1>
+                <p style="font-size:60px"><font color="#8BC980">HH</font>-<font color="#0082C8">Quiz</font>
+                </p>
+            </h1>
+        
+    </head>
+<body>
+    <div id="kysymys"></div>
+    <div id="vaihtoehdot"></div>
+    <div id="nappulat"></div>
+    <div id="palaute"></div>
+    <div><button onClick="teeKysymykset()">Uusi kysymys</button></div>
+
+<script>
+    let alreadyAsked = []
+    let round = 1
+    teeKysymykset()
+    function teeKysymykset() {
+        document.getElementById("vaihtoehdot").innerHTML = ""
+        document.getElementById("palaute").innerHTML = ""
+        document.getElementById("nappulat").innerHTML = ""
+
+    const kysymystenMaara = tenttiKysymykset.length
+
+    function getRandomInt() {
+        let random = Math.floor(Math.random()*tenttiKysymykset.length);
+        while (random > kysymystenMaara) {
+            random = Math.floor(Math.random()*tenttiKysymykset.length)
+        }
+        return random
+    }
+
+    function getKysymys() {
+        while (true) {
+            let kysymysID = tenttiKysymykset[getRandomInt()]
+            console.log(kysymysID)
+            if (alreadyAsked.indexOf(kysymysID) == -1) {
+                return kysymysID
+            }
+            else {
+                console.log('already asked!')
+                continue
+            }
+        }
+    }
+
+    let kysymysID = getKysymys()
+    let kysymys = tenttiNimetDict[kysymysID]
+
+    document.getElementById("kysymys").innerHTML = kysymys
+    doChoices(kysymysID)
+    alreadyAsked.push(kysymysID)
+
+    function doChoices(kysymysID) {
+        let string = ""
+        const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let vaihtoehdotArray = shuffleArray(tenttiVaihtoehdotDict[kysymysID])
+            for (i=0; i<vaihtoehdotArray.length; i++) {
+                let vaihtoehtoTeksti = vaihtoehdotArray[i]
+                let vaihtoehto = alphabet[i] + ") " + vaihtoehtoTeksti +"<br>"
+                let vaihtoehtoNappula = (vaihtoehdotArray[i] == tenttiVastauksetDict[kysymysID]) ? '<button onClick=' + 'oikeaVastaus('+kysymysID+') value=choiceButton'+i+'>' + alphabet[i] + '</button> ' 
+                : '<button onClick=' + 'vaaraVastaus('+kysymysID+') value=choiceButton'+i+'>' + alphabet[i] + '</button> '
+                document.getElementById("vaihtoehdot").innerHTML += vaihtoehto
+                document.getElementById("nappulat").innerHTML += vaihtoehtoNappula
+            }
+    }
+
+    function shuffleArray(array) {
+    let counter = array.length
+    while (counter > 0) {
+        let index = Math.floor(Math.random() * counter)
+        counter--
+        let temp = array[counter]
+        array[counter] = array[index]
+        array[index] = temp
+    }
+    return array
+}
+    round++
+    if (round % 10 == 0 ) {
+        alreadyAsked = []
+    }
+}
+    function vaaraVastaus(id) {
+        document.getElementById("palaute").innerHTML = "<font color=\"red\">Väärin! </font><br>" + tenttiResponseDict[id][0]
+        disableButtons()
+
+    }
+    function oikeaVastaus(id) {
+        document.getElementById("palaute").innerHTML = "<font color=\"green\">Oikein! </font><br>" + tenttiResponseDict[id][0]
+        disableButtons()
+    }
+
+    function disableButtons() {
+        let buttons = document.getElementsByTagName('button');
+        for (i = 0; i < buttons.length; i++) {
+            let button = buttons[i];
+            if(button.getAttribute('value') == 'choiceButton'+i) {
+                button.disabled = true
+            }
+            
+        }
+    }
+        
+
+
+    </script>
+</body>                                                                                   
+</html>
