@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 
@@ -6,19 +7,27 @@
         <script src="scripts/includes.js"></script>
           <link rel="stylesheet" href="styles/styles.css">
         <meta charset="utf-8"/>
-            <h1>
+            <h1 class="content">
                 <p style="font-size:60px"><font color="#8BC980">HH</font>-<font color="#0082C8">Quiz</font>
                 </p>
             </h1>
         
     </head>
 <body>
-    <div id="kysymys"></div>
-    <div id="vaihtoehdot"></div>
-    <div id="nappulat"></div>
-    <div id="palaute"></div>
-    <div><button onClick="teeKysymykset()">Uusi kysymys</button></div>
-
+    <div class="content-wrapper">
+        <div class="content">
+            <div id="kysymys"></div>
+            <div id="vaihtoehdot"></div>
+            <br>
+            <div id="nappulat"></div>
+            <div id="palaute"></div>
+            <br>
+            <div><button class="newQuestionButton" onClick="teeKysymykset()">Uusi kysymys</button></div>
+            <br><br>
+            <div id="kierros"></div>
+            <div class="credits">S-Solutions: Alex Kanerva, Tommi Santamaa, Kalle Tyllilä, Markus Kivikoski, Joonas Kulmala</div>
+        </div>
+    </div>
 <script>
     let alreadyAsked = []
     let round = 1
@@ -27,6 +36,7 @@
         document.getElementById("vaihtoehdot").innerHTML = ""
         document.getElementById("palaute").innerHTML = ""
         document.getElementById("nappulat").innerHTML = ""
+        document.getElementById("kierros").innerHTML = "Kierros: " + round
 
     const kysymystenMaara = tenttiKysymykset.length
 
@@ -41,12 +51,10 @@
     function getKysymys() {
         while (true) {
             let kysymysID = tenttiKysymykset[getRandomInt()]
-            console.log(kysymysID)
             if (alreadyAsked.indexOf(kysymysID) == -1) {
                 return kysymysID
             }
             else {
-                console.log('already asked!')
                 continue
             }
         }
@@ -66,8 +74,10 @@
             for (i=0; i<vaihtoehdotArray.length; i++) {
                 let vaihtoehtoTeksti = vaihtoehdotArray[i]
                 let vaihtoehto = alphabet[i] + ") " + vaihtoehtoTeksti +"<br>"
-                let vaihtoehtoNappula = (vaihtoehdotArray[i] == tenttiVastauksetDict[kysymysID]) ? '<button onClick=' + 'oikeaVastaus('+kysymysID+') value=choiceButton'+i+'>' + alphabet[i] + '</button> ' 
-                : '<button onClick=' + 'vaaraVastaus('+kysymysID+') value=choiceButton'+i+'>' + alphabet[i] + '</button> '
+                let buttonClass = i % 2 == 0 ? "choiceButtonGreen" : "choiceButtonBlue"
+                console.log(buttonClass)
+                let vaihtoehtoNappula = (vaihtoehdotArray[i] == tenttiVastauksetDict[kysymysID]) ? '<button class='+ buttonClass + ' onClick=' + 'oikeaVastaus('+kysymysID+') value=choiceButton'+i+'>' + alphabet[i] + '</button> ' 
+                : '<button class='+ buttonClass + ' onClick=' + 'vaaraVastaus('+kysymysID+') value=choiceButton'+i+'>' + alphabet[i] + '</button> '
                 document.getElementById("vaihtoehdot").innerHTML += vaihtoehto
                 document.getElementById("nappulat").innerHTML += vaihtoehtoNappula
             }
@@ -105,6 +115,7 @@
             let button = buttons[i];
             if(button.getAttribute('value') == 'choiceButton'+i) {
                 button.disabled = true
+                button.className += 'Disabled'
             }
             
         }
