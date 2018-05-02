@@ -1,17 +1,14 @@
-
-
 <!DOCTYPE html>
 <html>
-
     <head>
         <script src="scripts/includes.js"></script>
           <link rel="stylesheet" href="styles/styles.css">
         <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, heigth=device-height, initial-scale=1.0">
             <h1 class="content">
                 <p style="font-size:60px"><font color="#8BC980">HH</font>-<font color="#0082C8">Quiz</font>
                 </p>
             </h1>
-        
     </head>
 <body>
     <div class="content-wrapper">
@@ -22,12 +19,12 @@
             <div id="nappulat"></div>
             <div id="palaute"></div>
             <br>
-            <div><button class="newQuestionButton" onClick="teeKysymykset()">Uusi kysymys</button></div>
+            <div id="nappulat"><button class="newQuestionButton" onClick="teeKysymykset()">Uusi kysymys</button></div>
             <br><br>
             <div id="kierros"></div>
-            <div class="credits">S-Solutions: Alex Kanerva, Tommi Santamaa, Kalle Tyllilä, Markus Kivikoski, Joonas Kulmala</div>
         </div>
     </div>
+
 <script>
     let alreadyAsked = []
     let round = 1
@@ -54,16 +51,13 @@
             if (alreadyAsked.indexOf(kysymysID) == -1) {
                 return kysymysID
             }
-            else {
-                continue
-            }
         }
     }
 
     let kysymysID = getKysymys()
     let kysymys = tenttiNimetDict[kysymysID]
 
-    document.getElementById("kysymys").innerHTML = kysymys
+    document.getElementById("kysymys").innerHTML = '<b>' + kysymys + '</b>'
     doChoices(kysymysID)
     alreadyAsked.push(kysymysID)
 
