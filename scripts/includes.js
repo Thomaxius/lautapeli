@@ -54,13 +54,20 @@ const tenttiNimetDict = {
     "53": "Mikä on suomen suurin ammattikorkeakoulu?",
     "54": "Edellytetäänkö tietojenkäsittelyn koulutusohjelmassa aiempaa osaamista tietotekniikasta?",
     "55": "Monta korkeakoulua on mukana Haaga-Helian vaihto-opiskeluohjelmassa?",
-    "56": "Voiko Haaga-Heliassa suorittaa opintoja myös englanniksi?"
+    "56": "Voiko Haaga-Heliassa suorittaa opintoja myös englanniksi?",
+    "57": "Mihin aikaan vuodesta Haaga-Heliaan voi hakea?",
+    "58": "Minkä ikäiset opiskelijat voivat hakea avoimeen ammattikorkeakouluun?",
+    "59": "Miten avoin ammattikorkeakoulu eroaa normaalista ammattikorkeakoulusta?",
+    "60": "Kuinka paljon opintopisteitä täytyy olla, jotta voi hakea avoimesta amk:sta tutkinto-opiskelijaksi",
+    "61": "Kuinka paljon yksi opintopiste on opiskelutunneissa?",
+    "62": "Kuinka monta ohjelmointikieltä on olemassa?",
+    "63": "Mitä näistä Haaga-Heliassa opiskelu mahdollistaa?"
 }
 
 const tenttiVaihtoehdotDict = {
 	"1": ["Java","Python","Snake"],
 	"2": ["Java","SQL","Python"],
-	"3": ["Internet of Things","Big data","html-kieli"],
+	"3": ["Internet of Things","Big data","HTML-kieli"],
 	"4": ["DDR","SSD","RAM"],
 	"5": ["World wide web","World with web","Wireless world web"],
 	"6": ["170 op","210 op","250 op"],
@@ -101,7 +108,7 @@ const tenttiVaihtoehdotDict = {
     "41": ["Elisa", "CGI", "Lähes missä tahansa"],
     "42": ["Laurea", "Metropolia", "Keuda"],
     "43": ["F-secure", "Nokia", "Tieto"],
-    "44": ["John Travolta", "Elon Musk", "Dennis Ritchie"],
+    "44": ["John Travolta", "Kalle Tyllilä", "Dennis Ritchie"],
     "45": ["250€", "570€", "660€"],
     "46": ["Kaupunki", "Kela", "Valtio"],
     "47": ["Alennusta vaatteista", "Alennusta ruoasta", "Molemmista"],
@@ -113,13 +120,20 @@ const tenttiVaihtoehdotDict = {
     "53": ["Metropolia", "Haaga-Helia", "TAMK"],
     "54": ["Kyllä", "Ei"],
     "55": ["200", "10", "34"],
-    "56": ["Kyllä", "Ei"]
+    "56": ["Kyllä", "Ei"],
+    "57": ["Molempina ajankohtina", "Keväällä", "Syksyllä"],
+    "58": ["18-25", "25-55", "Kaiken ikäiset"],
+    "59": ["Avoin AMK on maksullinen", "Avoin AMK suoritetaan verkko-opintona", "Avoin AMK on englanniksi"],
+    "60": ["Ei yhtään", "60", "90"],
+    "61": ["15", "27", "30"],
+    "62": ["1000", "2000", "130", "680"],
+    "63": ["Mahdollisuutta suorittaa koko tutkinto verkko-opintona ICT- ja liiketoimintaprofiililla", "Aitoja työelämän projekteja yhdessä yritysten kanssa", "Huonoja kokemuksia", "erilaisia opiskelumuotoja, kuten päivä- ja iltatoteutukset sekä verkko- ja intensiivikurssit"]
 }
 
 const tenttiVastauksetDict = {
 	"1": ["Snake"],
-	"2": ["SQL"],
-	"3": ["html-kieli"],
+	"2": ["Java"],
+	"3": ["HTML-kieli"],
 	"4": ["RAM"],
 	"5": ["World wide web"],
 	"6": ["210 op"],
@@ -172,7 +186,14 @@ const tenttiVastauksetDict = {
     "53": ["Metropolia"],
     "54": ["Ei"],
     "55": ["200"],
-    "56": ["Kyllä"]
+    "56": ["Kyllä"],
+    "57": ["Molempina ajankohtina"],
+    "58": ["Kaiken ikäiset"],
+    "59": ["Avoin AMK on maksullinen"],
+    "60": ["60"],
+    "61": ["27"],
+    "62": ["2000"],
+    "63": ["Huonoja kokemuksia"]
 }
 
 const tenttiResponseDict = {
@@ -231,7 +252,14 @@ const tenttiResponseDict = {
     "53": ["Haaga-Helian yhteistyökoulu <b>Metropolia</b> on suomen suurin ammattikorkeakoulu."],
     "54": ["Tietojenkäsitelyn koulutusohjelmaan ei edellytetä aikasempaa kokemusta tai osaamista."],
     "55": ["Haaga-Helian vaihto-opiskeluohjelmaan kuuluu tällä hetkellä 200 koulua monessa eri maanosasassa."],
-    "56": ["Haaga-Heliassa on kursseja myös englanniksi sekä ruotsiksi."]
+    "56": ["Haaga-Heliassa on kursseja myös englanniksi sekä ruotsiksi."],
+    "57": ["Haaga-Heliaan voi hakea joko keväällä, jolloin aloitus on syksyllä, tai syksyllä, jolloin aloitus on tammikuussa."],
+    "58": ["Avoimeen AMK:n hakeville ei ole ikärajoja, kuten ei myöskään yhteishaun kautta tuleville."],
+    "59": ["Avoin AMK ei vaadi pääsykoetta, mutta on osittain maksullinen. Suoritettuasi 60 opintopistettä voit hakea tutkinto-opiskelijaksi."],
+    "60": ["Suoritettuasi 60 opintopistettä voit hakea tutkinto-opiskelijaksi"],
+    "61": ["Yksi opintopiste vastaa 27 tuntia."],
+    "62": ["Tunnettuja ohjelmointikieliä on yli 2000."],
+    "63": ["Ainoa, mitä Haaga-Heliassa opiskelu ei mahdollista, on huonot kokemukset."]
 }
 
 const tenttiKysymykset = []
